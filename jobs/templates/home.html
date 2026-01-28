@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center; padding: 40px 20px;">
+    <h1 style="font-size: 38px;">Find Your Dream Job Faster 🚀</h1>
+
+    <p style="font-size: 18px; color: #6b7280; max-width: 700px; margin: 15px auto;">
+        A modern job portal connecting candidates and recruiters with ease.
+    </p>
+
+    <div style="margin-top: 30px;">
+        <a href="{% url 'signup' %}" class="btn-primary">Get Started</a>
+        <a href="{% url 'login' %}" class="btn-secondary">Login</a>
+    </div>
+</div>
+
+<hr style="margin: 50px 0;">
+
+<h2 style="text-align:center;">Featured Jobs</h2>
+
+<div class="job-grid">
+    {% for job in featured_jobs %}
+        <div class="job-card">
+            <h3>{{ job.title }}</h3>
+
+            <p class="job-location">📍 {{ job.location }}</p>
+
+            <p class="job-desc">
+                {{ job.description|truncatechars:120 }}
+            </p>
+
+            <span class="badge {{ job.job_type }}">
+                {{ job.job_type|capfirst }}
+            </span>
+
+            <div class="job-actions">
+                <a href="{% url 'job_detail' job.id %}" class="btn-outline">
+                    View Job
+                </a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No jobs available.</p>
+    {% endfor %}
+</div>
+
+<div style="text-align:center; margin-top:30px;">
+    <a href="{% url 'job_list' %}" class="btn-secondary">
+        View All Jobs
+    </a>
+</div>
+{% endblock %}
+

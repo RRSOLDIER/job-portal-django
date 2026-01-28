@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Applicants</h2>
+
+<table>
+    <tr>
+        <th>Candidate</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for app in applications %}
+        <tr>
+            <td>{{ app.candidate.username }}</td>
+            <td>{{ app.status }}</td>
+            <td>
+                <a href="{% url 'update_application_status' app.id %}">
+                    Update Status
+                </a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="3">No applicants yet</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

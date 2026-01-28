@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Job Applications</h2>
+
+<table>
+    <tr>
+        <th>Job Title</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Applied On</th>
+    </tr>
+
+    {% for app in applications %}
+        <tr>
+            <td>{{ app.job.title }}</td>
+            <td>{{ app.job.location }}</td>
+            <td>{{ app.status|capfirst }}</td>
+            <td>{{ app.applied_at|date:"Y-m-d" }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="4">You have not applied to any jobs yet.</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+<a href="{% url 'job_list' %}">Browse Jobs</a>
+{% endblock %}
+

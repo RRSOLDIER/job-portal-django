@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Recruiter Dashboard</h2>
+
+<a href="{% url 'create_job' %}">Post New Job</a>
+
+<ul>
+    {% for job in jobs %}
+        <li>
+            {{ job.title }} |
+            <a href="{% url 'view_applicants' job.id %}">View Applicants</a>
+        </li>
+    {% empty %}
+        <li>No jobs posted yet</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

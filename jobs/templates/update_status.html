@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Update Application Status</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <select name="status">
+        <option value="applied">Applied</option>
+        <option value="shortlisted">Shortlisted</option>
+        <option value="rejected">Rejected</option>
+    </select>
+    <br><br>
+    <button type="submit">Update</button>
+</form>
+{% endblock %}
