@@ -5,6 +5,12 @@ The platform allows recruiters to post jobs and manage applicants, while candida
 
 This project follows **real-world software practices** and is designed as a **startup-style MVP**.
 
+Live Demo
+👉 https://job-portal-django-huld.onrender.com
+
+
+
+
 ---
 
 ## 🚀 Features
